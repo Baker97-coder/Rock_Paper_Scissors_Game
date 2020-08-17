@@ -7,20 +7,25 @@ def redo_start(a):
     if "y" not in a:
         if "n" not in a:
             a = input("please type 'y' or 'n': ")
-            redo_start(a)
-    else:
-        return a
+            return a
 
+
+def wrong_input(a):
+    if "rock" not in a:
+        if "paper" not in a:
+            if "scissors" not in a:
+                new_input = input("wrong input! Please type a valid input : ")
+                return new_input
 
 
 start_game = input("start Rock, Paper, Scissors game? (y) (n): ")
-redo_start(start_game)
+start_game = redo_start(start_game)
 
 while start_game == "y":
     player_move = input("Do you choose paper, rock, or scissors? ")
-
+    player_move = wrong_input(player_move)
     # starts computer move and covers tie scenario
-    
+
     computer_move = random.randint(1, 3)
     if computer_move == 1:
         computer_move = str("rock")
